@@ -82,3 +82,8 @@ a {
 .add-book-button:hover {
   background-color: rgb(212, 212, 212);
 }
+
+.bookshelf {
+  height: 76vh;
+  border: 1px blue solid;
+}
