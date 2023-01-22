@@ -133,3 +133,12 @@ a {
 .bookStatus:hover {
   background-color: rgb(212, 212, 212);
 }
+
+.submit-button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  height: 30px;
+  width: 80px;
+  border-radius: 10px;
+}
