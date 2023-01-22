@@ -14,7 +14,7 @@ header {
 .header-container {
   height: 8vh;
   display: flex;
-  border-bottom: 1px solid rgb(187, 187, 187);
+  border-bottom: 1px solid rgb(192, 192, 192);
   box-shadow: 0 8px 8px -4px lightgray;
   align-items: center;
   justify-content: space-between;
@@ -37,6 +37,10 @@ header {
   padding: 10px 15px;
   border-radius: 10px;
   margin-right: 17vw;
+}
+
+.login:hover {
+  background-color: rgb(212, 212, 212);
 }
 
 body {
@@ -67,7 +71,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 1px red;
   height: 10vh;
 }
 
@@ -84,6 +87,49 @@ a {
 }
 
 .bookshelf {
+  padding: 40px;
   height: 76vh;
-  border: 1px blue solid;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+
+.card {
+  box-shadow: 0 8px 8px -4px lightgray;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.bookRemove {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bookRemove:hover {
+  background-color: rgb(212, 212, 212);
+}
+
+.bookStatus {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bookStatus:hover {
+  background-color: rgb(212, 212, 212);
 }
