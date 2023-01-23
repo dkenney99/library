@@ -20,16 +20,25 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.changeRead = function () {
+  console.log(this.read);
+};
+
 const addBookButton = document.querySelector(".add-book-button");
 const bookShelf = document.querySelector(".bookshelf");
 const addBookSection = document.querySelector(".add-book");
 
+let counter = 0;
+
 addBookButton.addEventListener("click", () => {});
 
-const refreshLibrary = () =>
-  myLibrary.forEach((book) => {
+const showBooks = (library) =>
+  library.forEach((book, i) => {
     const cardEl = document.createElement("div");
     cardEl.classList.add("card");
+    book.id = counter;
+    cardEl.setAttribute("id", counter);
+    counter++;
 
     const bookTitle = document.createElement("p");
     bookTitle.classList.add("bookTitle");
@@ -51,9 +60,17 @@ const refreshLibrary = () =>
       bookStatus.innerText = "Not read";
     }
 
+    bookStatus.addEventListener("click", () => {
+      changeRead(book.id);
+    });
+
     const bookRemove = document.createElement("button");
     bookRemove.classList.add("bookRemove");
     bookRemove.innerText = "Remove";
+    bookRemove.addEventListener("click", () => {
+      myLibrary.splice(book.id, 1);
+      removeBookFromLibrary(book.id);
+    });
 
     cardEl.appendChild(bookTitle);
     cardEl.appendChild(bookAuthor);
@@ -63,13 +80,22 @@ const refreshLibrary = () =>
     bookShelf.appendChild(cardEl);
   });
 
-refreshLibrary();
-
 function addBookToLibrary() {
-  const bookTitle = document.getElementById("userInput").value;
-  const newBook = new Book(bookTitle, "Aldous Huxley", 225, true);
+  const bookTitle = document.getElementById("bookTitle").value;
+  const bookAuthor = document.getElementById("bookAuthor").value;
+  const pageNum = document.getElementById("pageNum").value;
+  const readBefore = document.getElementById("readBefore").checked;
+  const newBook = new Book(bookTitle, bookAuthor, pageNum, readBefore);
+  const newLibrary = [newBook];
   myLibrary.push(newBook);
-  console.log(myLibrary);
-  console.log(typeof newBook);
-  refreshLibrary();
+
+  showBooks(newLibrary);
 }
+
+function removeBookFromLibrary(bookId) {
+  console.log(`${bookId} removed`);
+  const list = document.querySelector(".bookshelf");
+  list.removeChild(list.children[bookId]);
+}
+
+showBooks(myLibrary);

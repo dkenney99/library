@@ -15,17 +15,23 @@
   </header>
   <body>
     <div class="add-book">
-      <button class="add-book-button">+ Add Book</button>
+      <button class="add-book-button">Add Book</button>
       <div class="add-book-form">
         <form class="book-add-form">
-          <label for="myInput">Add your book:</label>
-          <input type="text" id="userInput" />
+          <label for="bookTitle">Title:</label>
+          <input type="text" id="bookTitle" />
+          <label for="bookAuthor">Author:</label>
+          <input type="text" id="bookAuthor" />
+          <label for="pageNum">Pages:</label>
+          <input type="number" id="pageNum" />
+          <label for="readBefore">Finished Reading?:</label>
+          <input type="checkbox" id="readBefore" />
           <button
             class="submit-button"
             type="button"
             onclick="addBookToLibrary()"
           >
-            Submit
+            Add book
           </button>
         </form>
       </div>
