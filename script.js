@@ -1,17 +1,4 @@
-const myLibrary = [
-  {
-    title: "The Fellowship of the Ring",
-    author: "J.R.R. Tolkien",
-    pages: 423,
-    read: true,
-  },
-  {
-    title: "Harry Potter and the Sorcerer's Stone",
-    author: "J.K. Rowlings",
-    pages: 311,
-    read: false,
-  },
-];
+const myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -20,17 +7,27 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.changeRead = function () {
-  console.log(this.read);
+function ChangeRead() {}
+
+ChangeRead.prototype.changeStatus = function () {
+  const cardFor = document.getElementById(this.id);
+  const readButton = cardFor.querySelector(".bookStatus");
+  if (this.read) {
+    this.read = false;
+    readButton.innerText = "Not read";
+  } else {
+    this.read = true;
+    readButton.innerText = "Read";
+  }
 };
+
+Book.prototype = Object.create(ChangeRead.prototype);
 
 const addBookButton = document.querySelector(".add-book-button");
 const bookShelf = document.querySelector(".bookshelf");
 const addBookSection = document.querySelector(".add-book");
 
 let counter = 0;
-
-addBookButton.addEventListener("click", () => {});
 
 const showBooks = (library) =>
   library.forEach((book, i) => {
@@ -61,7 +58,7 @@ const showBooks = (library) =>
     }
 
     bookStatus.addEventListener("click", () => {
-      changeRead(book.id);
+      console.log(book.changeStatus());
     });
 
     const bookRemove = document.createElement("button");
